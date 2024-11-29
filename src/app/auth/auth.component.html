@@ -1,0 +1,36 @@
+<div class="auth-container">
+    <div class="auth-card">
+      <p-card [style]="{ width: '25rem', borderRadius: '10px', overflow: 'hidden' }">
+        <ng-template pTemplate="title">Iniciar sesión</ng-template>
+        <p class="p-mb-2">Accede a tu cuenta para continuar</p>
+  
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="p-field">
+            <p-floatlabel>
+              <input id="email" type="text" pInputText formControlName="email" />
+              <label for="over_label">Email</label>
+          </p-floatlabel>
+
+          </div>
+  
+          <div class="p-field">
+            <p-floatlabel>
+              <input id="password" type="password" pInputText formControlName="password" />
+              <label for="over_label">Contraseña</label>
+          </p-floatlabel>
+          </div>
+  
+          <p-button label="Iniciar sesión" type="submit" [loading]="loading" class="p-mt-2" block></p-button>
+          @if (invalidForm) {
+            <div class="p-error">
+                <small>El correo y la contraseña son obligatorios.</small>
+              </div>
+            }
+            @if (errorMessage) {
+                <p class="p-error p-mt-2">{{ errorMessage }}</p>
+            }
+        </form>
+      </p-card>
+    </div>
+  </div>
+  

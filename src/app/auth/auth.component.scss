@@ -1,0 +1,67 @@
+/* Centrado de la tarjeta y fondo oscuro con gradiente */
+.auth-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Estilos para la tarjeta de login */
+  .auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  /* Animación para el login */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Estilos del header de la tarjeta */
+  .p-card .p-card-header {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  
+  /* Estilo del footer de la tarjeta (botones) */
+  .p-card-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Formulario y campos */
+  .p-field {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilo del botón */
+  .p-button {
+    background: #007bff;
+    border: none;
+  }
+  
+  .p-button:hover {
+    background: #0056b3;
+  }
+  
+  .p-error {
+    color: red;
+  }
+  
+  .p-mb-2 {
+    margin-bottom: 2rem; /* Aumentamos el margen inferior a 2rem */
+  }
