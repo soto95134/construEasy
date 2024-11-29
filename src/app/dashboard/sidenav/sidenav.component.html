@@ -1,0 +1,17 @@
+<!-- sidenav.component.html -->
+<div [ngClass]="{'sidenav': true, 'sidenav-open': isOpen}">
+  <div class="sidenav-content">
+    <ul class="menu-items">
+        @for (item of menuItems; track $index) {
+            <li>
+                <a [routerLink]="item.route" class="menu-item">
+                  <span class="menu-icon" [class]="item.icon"></span>
+                  <span>{{ item.label }}</span>
+                </a>
+              </li>
+        }
+    </ul>
+  </div>
+</div>
+
+<button class="menu-toggle" (click)="toggleMenu()">☰</button>
