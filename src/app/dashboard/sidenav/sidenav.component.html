@@ -1,7 +1,11 @@
 <!-- sidenav.component.html -->
 <div [ngClass]="{'sidenav': true, 'sidenav-open': isOpen}">
+
   <div class="sidenav-content">
     <ul class="menu-items">
+        <div class="logo">
+            <h2>Mi Empresa</h2>
+        </div>
         @for (item of menuItems; track $index) {
             <li>
                 <a [routerLink]="item.route" class="menu-item">

@@ -1,28 +1,25 @@
 <div class="card">
-    <p-toolbar [style]="{ 'border-radius': '3rem', 'padding': '1rem 1rem 1rem 1.5rem' }">
-      <ng-template #start>
-        <!-- Aquí podrías poner algún logo o botón de menú -->
-      </ng-template>
-  
-      <ng-template #end>
-        <div class="flex items-center gap-2">
-          <!-- Mostrar el nombre y el rol del usuario -->
-          <span class="user-info">
-            <strong>{{ currentUser?.user.email }}</strong> 
-            @if (currentUser?.role) {
-                <span>({{ currentUser?.role }})</span>
-            }
+  <p-toolbar class="custom-toolbar">
+    <ng-template #start>
+      <!-- Aquí podrías poner algún logo o botón de menú -->
+    </ng-template>
 
-          </span>
-  
-          <!-- Botón de perfil y avatar -->
-          <p-button label="Perfil" size="small" />
-          <p-avatar
-            [image]="currentUser?.avatarUrl || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'"
-            [style]="{ width: '32px', height: '32px' }"
-          />
-        </div>
-      </ng-template>
-    </p-toolbar>
-  </div>
-  
+    <ng-template #end>
+      <div class="user-info-container">
+        <!-- Mostrar el nombre y el rol del usuario -->
+        <span class="user-info">
+          <strong>{{ currentUser?.user.email }}</strong>
+          <span *ngIf="currentUser?.role">({{ currentUser?.role }})</span>
+        </span>
+
+        <!-- Botón de perfil y avatar -->
+        <p-button label="Perfil" size="small" class="profile-button" />
+        <p-avatar
+          [image]="currentUser?.avatarUrl || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'"
+          [style]="{ width: '32px', height: '32px' }"
+          class="avatar"
+        />
+      </div>
+    </ng-template>
+  </p-toolbar>
+</div>
