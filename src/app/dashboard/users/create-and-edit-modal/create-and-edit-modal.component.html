@@ -1,0 +1,21 @@
+@if (isVisible) {
+    <div class="modal-overlay">
+        <div class="modal-container">
+          <div class="modal-header">
+            <h2>{{ modalData?.title || 'Modal Title' }}</h2>
+            <button (click)="closeModal()" class="close-button">X</button>
+          </div>
+          <div class="modal-body">
+            <ng-content></ng-content> <!-- Aquí se renderiza el contenido dinámico -->
+          </div>
+          <div class="modal-footer">
+            <button (click)="closeModal()" class="btn btn-secondary">Cerrar</button>
+            @if (modalData?.onSave) {
+                <button (click)="modalData.onSave()" class="btn btn-primary">Guardar</button>
+            }
+          </div>
+        </div>
+      </div>
+      
+}
+

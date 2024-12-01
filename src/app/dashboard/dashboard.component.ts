@@ -9,4 +9,10 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  isSidenavOpen: boolean = false; // Estado del sidenav
+
+  toggleSidenav() {
+    this.isSidenavOpen = !this.isSidenavOpen; // Alternar estado
+  }
+}

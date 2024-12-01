@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -10,18 +10,23 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sidenav.component.scss',
 })
 export class SidenavComponent {
-  isOpen = false; // Estado de visibilidad del menú lateral
+  @Input() isOpen: boolean = false; // Estado controlado externamente
 
   // Definimos los elementos del menú
   menuItems = [
-    { label: 'Inicio', route: '/home', icon: 'pi pi-home' },
-    { label: 'Usuarios', route: '/users', icon: 'pi pi-info-circle' },
-    { label: 'Clientes', route: '/clients', icon: 'pi pi-briefcase' },
+    { label: 'Inicio', route: '/dashboard', icon: 'pi pi-home' },
+    { label: 'Usuarios', route: '/dashboard/users', icon: 'pi pi-info-circle' },
+    { label: 'Clientes', route: '/dashboard/clients', icon: 'pi pi-briefcase' },
   ];
 
   constructor(private router: Router) {}
 
   toggleMenu() {
-    this.isOpen = !this.isOpen;
+    this.isOpen = false;
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+    this.isOpen = false;
   }
 }

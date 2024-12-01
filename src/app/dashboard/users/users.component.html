@@ -1,0 +1,29 @@
+<!-- Botón para crear un nuevo usuario -->
+<button class="btn btn-primary" (click)="openModal()">Crear Usuario</button>
+
+<!-- Tabla de usuarios -->
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track $index) {
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role?.name }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="openModal(user)">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Eliminar</button>
+            </td>
+          </tr>
+    }
+  </tbody>
+</table>
+
+<app-create-and-edit-modal></app-create-and-edit-modal>

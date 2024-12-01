@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
-import { Toolbar } from 'primeng/toolbar';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [Toolbar, AvatarModule, SharedModule, ButtonModule],
+  imports: [AvatarModule, SharedModule, ButtonModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
 })
@@ -17,15 +15,23 @@ export class ToolbarComponent {
   currentUser: any;
 
   constructor(private authService: AuthService, private router: Router) {}
+  @Output() toggle = new EventEmitter<void>();
 
   ngOnInit(): void {
-    // Obtener el usuario logueado al iniciar el componente
-    this.currentUser = this.authService.getUser(); // Aquí se llama al método para obtener el usuario
+    this.currentUser = this.authService.getUser();
     console.log(this.currentUser);
   }
 
-  onLogout(): void {
-    this.authService.logout();
-    this.router.navigate(['/auth']); // Redirigir al login después de cerrar sesión
+  toggleMenu() {
+    this.toggle.emit(); // Emitir el evento
+  }
+
+  goToProfile(): void {
+    console.log('Ir al perfil');
+  }
+
+  logout() {
+    this.authService.logout(); // Cerrar sesión desde el servicio
+    this.router.navigate(['/auth']); // Redirigir al login
   }
 }

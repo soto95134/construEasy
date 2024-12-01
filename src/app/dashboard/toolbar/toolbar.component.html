@@ -1,25 +1,33 @@
-<div class="card">
-  <p-toolbar class="custom-toolbar">
-    <ng-template #start>
-      <!-- Aquí podrías poner algún logo o botón de menú -->
-    </ng-template>
+<!-- toolbar.component.html -->
+<div class="custom-toolbar">
+  <!-- Sección izquierda: Aquí podrías agregar un logo o un botón de menú -->
+  <div class="left-section">
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    <span class="logo">Mi App</span>
+  </div>
 
-    <ng-template #end>
-      <div class="user-info-container">
-        <!-- Mostrar el nombre y el rol del usuario -->
-        <span class="user-info">
-          <strong>{{ currentUser?.user.email }}</strong>
-          <span *ngIf="currentUser?.role">({{ currentUser?.role }})</span>
-        </span>
-
-        <!-- Botón de perfil y avatar -->
-        <p-button label="Perfil" size="small" class="profile-button" />
-        <p-avatar
-          [image]="currentUser?.avatarUrl || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'"
-          [style]="{ width: '32px', height: '32px' }"
-          class="avatar"
-        />
-      </div>
-    </ng-template>
-  </p-toolbar>
+  <!-- Sección derecha: Información del usuario y avatar -->
+  <div class="right-section">
+    <div class="user-info">
+      <!-- Nombre del usuario -->
+      <span class="user-name">{{ currentUser?.user.name || 'Usuario Invitado' }}</span>
+      <!-- Correo electrónico -->
+      <strong>{{ currentUser?.user.email }}</strong>
+      <!-- Rol del usuario -->
+      @if (currentUser?.role) {
+        <span>({{ currentUser?.role.name }})</span>
+      }
+    </div>
+    <!-- Botón para ir al perfil del usuario -->
+    <button class="profile-button" (click)="goToProfile()">Perfil</button>
+    <!-- Avatar del usuario -->
+    <img 
+      class="avatar" 
+      [src]="currentUser?.user.avatarUrl || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'" 
+      alt="Avatar" 
+      title="{{ currentUser?.user.name || 'Usuario' }}"
+    >
+    <!-- Botón para cerrar sesión -->
+    <button class="logout-button" (click)="logout()">Cerrar sesión</button>
+  </div>
 </div>
