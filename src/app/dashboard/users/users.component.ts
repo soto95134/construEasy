@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { Table } from 'primeng/table';
 import { User } from '../../models/user.model';
-import { ReactiveFormsModule } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
 import { ModalService } from '../../services/modal.service';
-import { CreateAndEditModalComponent } from './create-and-edit-modal/create-and-edit-modal.component';
+import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [ReactiveFormsModule, CreateAndEditModalComponent],
+  imports: [ButtonModule, CommonModule, TableModule],
+  providers: [],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
 export class UsersComponent {
   users: User[] = [];
+  loading: boolean = true;
+  searchValue: string | undefined;
+
   currentUser: User = {
     id: 0,
-    username: '',
     email: '',
     password: '',
     role_id: 1,
@@ -84,5 +89,10 @@ export class UsersComponent {
         console.error('Error deleting user', error);
       }
     );
+  }
+
+  clear(table: Table) {
+    table.clear();
+    this.searchValue = '';
   }
 }

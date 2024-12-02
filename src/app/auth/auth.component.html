@@ -6,18 +6,18 @@
   
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="p-field">
-            <p-floatlabel>
+            <p-floatLabel>
               <input id="email" type="text" pInputText formControlName="email" />
               <label for="over_label">Email</label>
-          </p-floatlabel>
+          </p-floatLabel>
 
           </div>
   
           <div class="p-field">
-            <p-floatlabel>
+            <p-floatLabel>
               <input id="password" type="password" pInputText formControlName="password" />
               <label for="over_label">Contraseña</label>
-          </p-floatlabel>
+          </p-floatLabel>
           </div>
   
           <p-button label="Iniciar sesión" type="submit" [loading]="loading" class="p-mt-2" block></p-button>
@@ -33,4 +33,3 @@
       </p-card>
     </div>
   </div>
-  

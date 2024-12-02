@@ -1,33 +1,35 @@
-<!-- toolbar.component.html -->
-<div class="custom-toolbar">
-  <!-- Sección izquierda: Aquí podrías agregar un logo o un botón de menú -->
-  <div class="left-section">
-    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
-    <span class="logo">Mi App</span>
-  </div>
-
-  <!-- Sección derecha: Información del usuario y avatar -->
-  <div class="right-section">
-    <div class="user-info">
-      <!-- Nombre del usuario -->
-      <span class="user-name">{{ currentUser?.user.name || 'Usuario Invitado' }}</span>
-      <!-- Correo electrónico -->
-      <strong>{{ currentUser?.user.email }}</strong>
-      <!-- Rol del usuario -->
-      @if (currentUser?.role) {
-        <span>({{ currentUser?.role.name }})</span>
-      }
+<p-toolbar 
+  styleClass="bg-gray-900 shadow-2" 
+  [style]="{ 'border-radius': '3rem', 'background-color': '#1a1a1a' }">
+  <!-- Sección izquierda -->
+  <ng-template pTemplate="start">
+    <div class="left-section">
+      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+      <span class="logo">Mi App</span>
     </div>
-    <!-- Botón para ir al perfil del usuario -->
-    <button class="profile-button" (click)="goToProfile()">Perfil</button>
-    <!-- Avatar del usuario -->
-    <img 
-      class="avatar" 
-      [src]="currentUser?.user.avatarUrl || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'" 
-      alt="Avatar" 
-      title="{{ currentUser?.user.name || 'Usuario' }}"
-    >
-    <!-- Botón para cerrar sesión -->
-    <button class="logout-button" (click)="logout()">Cerrar sesión</button>
-  </div>
-</div>
+  </ng-template>
+
+  <!-- Sección derecha -->
+  <ng-template pTemplate="end">
+    <div class="right-section">
+      <div class="user-info">
+        <!-- Nombre del usuario -->
+        <span class="user-name">{{ currentUser?.user.name || 'Usuario Invitado' }}</span>
+        <!-- Correo electrónico -->
+        <strong>{{ currentUser?.user.email }}</strong>
+        <!-- Rol del usuario -->
+        <span *ngIf="currentUser?.role">({{ currentUser?.role.name }})</span>
+      </div>
+      <!-- Botón para ir al perfil del usuario -->
+      <button class="profile-button" (click)="goToProfile()">Perfil</button>
+      <!-- Avatar del usuario -->
+      <img 
+        class="avatar" 
+        [src]="currentUser?.user.avatarUrl || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'" 
+        alt="Avatar" 
+        title="{{ currentUser?.user.name || 'Usuario' }}">
+      <!-- Botón para cerrar sesión -->
+      <button class="logout-button" (click)="logout()">Cerrar sesión</button>
+    </div>
+  </ng-template>
+</p-toolbar>

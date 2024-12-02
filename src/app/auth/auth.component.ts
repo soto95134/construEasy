@@ -2,20 +2,25 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service'; // Asegúrate de tener tu servicio de autenticación
 import { ButtonModule } from 'primeng/button';
-import { Card } from 'primeng/card';
+import { CardModule } from 'primeng/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { FloatLabel } from 'primeng/floatlabel';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-auth',
   standalone: true,
   imports: [
-    Card,
+    CardModule,
     ButtonModule,
     ReactiveFormsModule,
+    FormsModule,
     InputTextModule,
-    FloatLabel,
+    FloatLabelModule,
+    CommonModule,
   ],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],

@@ -1,0 +1,35 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; // La altura ocupa toda la pantalla
+  
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden; // Evita que el contenido se desborde
+  
+      app-sidenav {
+        flex: 0 0 250px; // Ancho fijo cuando está abierto
+        transition: flex 0.3s ease;
+  
+        &.collapsed {
+          flex: 0 0 80px; // Ancho reducido cuando está cerrado
+        }
+      }
+  
+      .router-content {
+        flex: 1; // Ocupa todo el espacio restante
+        padding: 1rem; // Margen interno
+        transition: margin-left 0.3s ease;
+  
+        &.expanded {
+          margin-left: 250px; // Ajusta el contenido para el estado abierto
+        }
+  
+        &.collapsed {
+          margin-left: 80px; // Ajusta el contenido para el estado cerrado
+        }
+      }
+    }
+  }
+  

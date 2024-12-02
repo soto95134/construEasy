@@ -1,19 +1,24 @@
-<!-- sidenav.component.html -->
-<div [ngClass]="{'sidenav': true, 'sidenav-open': isOpen}">
-  <button class="menu-toggle" (click)="toggleMenu()"><-</button>
-  <div class="sidenav-content">
-    <ul class="menu-items">
-        <div class="logo">
-            <h2>Mi Empresa</h2>
-        </div>
-        @for (item of menuItems; track $index) {
-            <li (click)="navigateTo(item.route)">
-                <a [routerLink]="item.route" class="menu-item">
-                  <span class="menu-icon" [class]="item.icon"></span>
-                  <span>{{ item.label }}</span>
-                </a>
-              </li>
-        }
-    </ul>
+<p-sidebar 
+  [(visible)]="isOpen" 
+  [position]="'left'" 
+  [modal]="false" 
+  [baseZIndex]="10000" 
+  [style]="{width: '250px'}" 
+  (onShow)="onShow.emit()" 
+  (onHide)="onHide.emit()"
+>
+  <div class="sidenav-header">
+    <h2>Mi Empresa</h2>
   </div>
-</div>
+
+  <ul class="menu-items">
+    @for (item of menuItems; track $index) {
+      <li (click)="navigateTo(item.route)">
+        <a [routerLink]="item.route" class="menu-item">
+          <i class="pi" [ngClass]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</p-sidebar>

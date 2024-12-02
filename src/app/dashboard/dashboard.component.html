@@ -1,9 +1,18 @@
-<app-toolbar (toggle)="toggleSidenav()"></app-toolbar>
-<div class="main-container">
-  <!-- Contenedor principal -->
-  <div class="sidenav-and-content">
-    <app-sidenav [isOpen]="isSidenavOpen"></app-sidenav>
-    <div class="main-content">
+<div class="dashboard-container">
+  <!-- Toolbar -->
+  <app-toolbar (toggle)="toggleSidenav()"></app-toolbar>
+
+  <!-- Main content area -->
+  <div class="main-content">
+    <!-- Sidebar -->
+    <app-sidenav 
+      [isOpen]="isSidebarOpen" 
+      (onShow)="handleSidebarShow()" 
+      (onHide)="handleSidebarHide()">
+    </app-sidenav>
+
+    <!-- Router outlet (content area) -->
+    <div class="router-content" [ngClass]="{ 'expanded': isSidebarOpen, 'collapsed': !isSidebarOpen }">
       <router-outlet></router-outlet>
     </div>
   </div>

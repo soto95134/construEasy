@@ -4,10 +4,18 @@ import { SharedModule } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [AvatarModule, SharedModule, ButtonModule],
+  imports: [
+    AvatarModule,
+    SharedModule,
+    ButtonModule,
+    ToolbarModule,
+    CommonModule,
+  ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
 })
